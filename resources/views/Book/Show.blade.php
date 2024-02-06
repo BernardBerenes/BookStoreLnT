@@ -40,6 +40,14 @@
                 <p class="card-text">{{ $b->synopsis }}</p>
                 <p class="card-text">Total Page: {{ $b->page }}</p>
                 <p class="card-text">Stocks: {{ $b->stocks }}</p>
+                <div class="d-flex">
+                    <a href="{{ route('edit_books_page', ['id'=>$b->id]) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('delete_books', ['id'=>$b->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger mx-2">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     @endforeach
