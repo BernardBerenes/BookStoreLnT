@@ -39,10 +39,6 @@
             <input type="text" class="form-control" id="exampleFormControlInput1" name="title" value="{{ $book->title }}">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Author</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="author" value="{{ $book->author }}">
-        </div>
-        <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Publisher</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" name="publisher" value="{{ $book->publisher }}">
         </div>

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
-            $table->string('author');
             $table->string('publisher');
             $table->longText('synopsis');
             $table->string('isbn');

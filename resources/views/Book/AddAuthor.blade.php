@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <title>Show Book</title>
+    <title>Add Author</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -30,31 +30,19 @@
             </div>
         </div>
     </nav>
-    @foreach ($books as $b)
-        <div class="card m-5" style="width: 18rem;">
-            <div class="card-body">
-                <h1 class="card-title">{{ $b->title }}</h1>
-                <h2 class="card-subtitle mb-2">{{ $b->category->category_name }}</h2>
-                <h4>Author</h4>
-                @foreach ($b->author as $a)
-                    <p class="card-subtitle mb-2">{{ $a->author_name }}</p>
+    <h1 class="mx-5">Add Author</h1>
+    <form class="p-5" method="POST" action="{{ route('add_author', ['id'=>$book->id]) }}">
+        @csrf
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Author Name</label>
+            <select class="form-select" aria-label="Default select example" name="author">
+                <option selected>Author</option>
+                @foreach ($authors as $a)
+                    <option value="{{ $a->id }}">{{ $a->author_name }}</option>
                 @endforeach
-                <p class="card-text">{{ $b->isbn }}</p>
-                <p class="card-text">{{ $b->release_date}}</p>
-                <p class="card-text">{{ $b->synopsis }}</p>
-                <p class="card-text">Total Page: {{ $b->page }}</p>
-                <p class="card-text">Stocks: {{ $b->stocks }}</p>
-                <div class="d-flex">
-                    <a href="{{ route('edit_books_page', ['id'=>$b->id]) }}" class="btn btn-warning">Edit</a>
-                    <a href="{{ route('add_author_page', ['id'=>$b->id]) }}" class="btn btn-secondary mx-2">Add Author</a>
-                    <form action="{{ route('delete_books', ['id'=>$b->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
+            </select>
         </div>
-    @endforeach
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
 </body>
 </html>

@@ -27,6 +27,9 @@ Route::get('/book/edit/{id}', [BookController::class, 'edit_books_page'])->name(
 Route::patch('/book/update/{id}', [BookController::class, 'update_books'])->name('update_books');
 Route::delete('/book/delete/{id}', [BookController::class, 'delete_books'])->name('delete_books');
 
+Route::get('/book/add-author/{id}', [BookController::class, 'add_author_page'])->name('add_author_page');
+Route::post('/book/add-author/{id}', [BookController::class, 'add_author'])->name('add_author');
+
 Route::get('/category', [CategoryController::class, 'category_page'])->name('category_page');
 Route::get('/category/add', [CategoryController::class, 'add_category_page'])->name('add_category_page');
 Route::post('/category/add', [CategoryController::class, 'add_category'])->name('add_category');

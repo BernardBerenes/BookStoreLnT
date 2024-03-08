@@ -12,7 +12,6 @@ class Book extends Model
     protected $fillable = [
         'category_id',
         'title',
-        'author',
         'publisher',
         'synopsis',
         'isbn',
@@ -23,5 +22,9 @@ class Book extends Model
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function author(){
+        return $this->belongsToMany(Author::class, 'book_authors');
     }
 }
